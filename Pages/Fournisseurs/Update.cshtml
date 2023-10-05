@@ -1,0 +1,63 @@
+﻿@page "/Fournisseurs/Update/{id}"
+@using AST1.Models;
+@using Microsoft.AspNetCore.Components;
+@model AST1.Pages.Fournisseurs.UpdateModel
+@inject NavigationManager NavigationManager
+@using AST1.SQLConnection
+@{
+}
+
+
+
+<h1>Modifier Fournisseur</h1>
+
+<form method="post" asp-page-handler="UpdateProvider" asp-page="/Fournisseurs/UpdateProvider"  class="mt-5">
+       
+    <h3>Edit Provider with ID  </h3>
+   <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="IdProvider" asp-for="provider.IdProvider"  required>
+    <div class="mb-3">
+        <label for="" class="form-label"> Nom de fournisseur  </label>
+        <input type="text" class="form-control" name="NameProvider" asp-for="provider.NameProvider"  required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Adresse provider </label>
+        <input type="text" class="form-control" name="AdresseProvider" asp-for="provider.AdresseProvider" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Actif Provider </label>
+        <input type="text" class="form-control" name="ActifProvider" asp-for="provider.ActifProvider" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">RaisonSocialProvider </label>
+        <input type="text" class="form-control" name="RaisonSocialProvider" asp-for="provider.RaisonSocialProvider">
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">MailProvider</label>
+        <input type="text" class="form-control" name="MailProvider" asp-for="provider.MailProvider" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telephone </label>
+        <input type="text" class="form-control" name="PhoneProvider" asp-for="provider.PhoneProvider" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Modifier</button>
+    <button id="UpdateProvider" type="submit" class="btn btn-primary">
+        <script>
+            function RedirectLogin() {
+                window.location.href = "/Fournisseurs/List";
+            }
+        </script>Retourner
+    </button>
+</form>
+
+<script>
+    
+    document.getElementById("retournerButton").addEventListener("click", function () {
+        window.location.href="/Home"; 
+    });
+</script>
+
+
+    

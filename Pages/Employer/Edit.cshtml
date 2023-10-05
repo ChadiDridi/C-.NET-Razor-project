@@ -1,0 +1,52 @@
+﻿@page "Employer/Edit/{id}"
+@model AST1.Pages.Employer.EditModel
+@{
+    var message=ViewData["Message"]?.ToString();
+}
+<h1 class="mb-3"> Edit Employer </h1>
+@if(!string.IsNullOrEmpty(message)){
+    <div class="alert alert-success" role="alert">
+        @message
+
+    </div>
+}
+    
+    <div class="form-group">
+        <label for="nom">Nom</label>
+    <input type="text" class="form-control" id="nom" name="nom" required asp-for="EditEmployeeViewModel.NomEmployer">
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prenom</label>
+    <input type="text" class="form-control" id="prenom" name="prenom" required asp-for="EditEmployeeViewModel.PrenomEmployer">
+    </div>
+    <div class="form-group">
+        <label for="motdepasse">Mot de passe</label>
+        <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" required asp-for="EditEmployeeViewModel.EmailEmployer">
+    </div>
+    <div class="form-group">
+        <label for="TelephoneEmployer">Telephone</label>
+    <input type="text" class="form-control" id="TelephoneEmployer" name="TelephoneEmployer" required asp-for="EditEmployeeViewModel.TelephoneEmployer">
+    </div>
+    <div class="form-group">
+        <label for="Services">Services</label>
+    <input type="text" class="form-control" id="Services" name="Services" required asp-for="EditEmployeeViewModel.Services">
+</div>
+<div class="mb-3 d-flex justify-content-between">
+    <button type="submit" class="btn btn-primary asp-page-handler="Update">Update</button>
+    <button type="submit" class="btn btn-danger" asp-page-handler="Delete">Delete</button>
+</div>
+<div>
+
+    <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()">
+        Retourner
+        <script>
+            function RedirectRetourner() {
+                window.location.href = "/Home";
+            }
+        </script>
+    </button>
+</div>

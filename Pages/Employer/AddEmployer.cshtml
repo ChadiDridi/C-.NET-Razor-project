@@ -1,0 +1,68 @@
+﻿@page "/AddEmployer"
+@model AST1.Pages.Employer.AddEmployerModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+<title>Créer un nouveau employer</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+   
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h1 class="mb-3">Créer un nouveau employer</h1>
+                    @if (!String.IsNullOrWhiteSpace(message))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @message
+                        </div>
+                    }
+                    <form method="post" asp-page-handler="Create" class="mt-5">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" class="form-control" id="nom" name="NomEmployer" required asp-for="Employer.NomEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prenom</label>
+                            <input type="text" class="form-control" id="prenom" name="PrenomEmployer" required asp-for="Employer.PrenomEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="motdepasse">Mot de passe</label>
+                            <input type="password" class="form-control" id="motdepasse" name="PasswordEmployer" required asp-for="Employer.PasswordEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="EmailEmployer" required asp-for="Employer.EmailEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Poste</label>
+                            <input type="text" class="form-control" id="email" name="PosteEmployer" required asp-for="Employer.PosteEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="TelephoneEmployer">Telephone</label>
+                            <input type="text" class="form-control" id="TelephoneEmployer" name="TelephoneEmployer" required asp-for="Employer.TelephoneEmployer">
+                        </div>
+                        <div class="form-group">
+                            <label for="Services">Services</label>
+                            <input type="text" class="form-control" id="Services" name="Services" required asp-for="Employer.Services">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Créer</button>
+                            <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()">
+                                Retourner
+                                <script>
+                                    function RedirectRetourner() {
+                                        window.location.href = "/";
+                                    }
+                                </script>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

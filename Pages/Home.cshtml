@@ -1,0 +1,61 @@
+﻿@page "/Home"
+@model AST1.Pages.HomeModel
+@using Microsoft.AspNetCore.Http
+@using AST1.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/site.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-4 bg-dark text-white p-3">
+                <h4></h4>
+                <hr>
+                <ul class="list-unstyled">
+                    <li><a href="/Home" class="btn btn-dark btn-block mb-2"><i class="fas fa-home"></i> Acceuil</a></li>
+                    <li><a href="/Disponibilite/Disponibilite" class="btn btn-dark btn-block mb-2"><i class="fas fa-calendar-alt"></i> Disponibilité</a></li>
+                    <li><a href="/Materiels/Materiel" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Materiels</a></li>
+                    <li><a href="/BonAchat/BonAchat" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Bon d'Achat</a></li>
+                    <li><a href="/Affectation/Affectation" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Affectation</a></li>
+                    <li><a href="/Mission/ConsultMission" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Mission</a></li>
+                    <li><a href="/Fournisseurs/Fournisseurs" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Fournisseurs</a></li>
+                    <li><a href="/List" class="btn btn-dark btn-block mb-2"><i class="fas fa-toolbox"></i> Liste des Employees</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-8">
+               
+                <div class="container">
+                    <div class="row">
+                      
+                    </div>
+                </div>
+              
+                <div class="row mt-5">
+                    <img src="https://www.bleepstatic.com/content/hl-images/2021/04/02/Asteelflash.jpg" alt="Online Image" class="img-fluid">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout button outside the main content area -->
+    <div class="container mt-3">
+        <button type="submit" class="btn btn-primary" onclick="RedirectRetourner()">Logout</button>
+    </div>
+    <script>
+        function RedirectRetourner() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
+
+  

@@ -1,0 +1,63 @@
+﻿@page "/List"
+@using AST1.Models;
+@using Microsoft.AspNetCore.Components;
+@model AST1.Pages.Employer.ListModel
+@inject NavigationManager NavigationManager
+@{
+    var errorMessage = TempData["errorMessage"]?.ToString();
+    var successMessage = TempData["successMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]?.ToString()</h3>
+<h1 class="mb-6"> Liste des employees </h1>
+
+@if (Model.employees != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Mot de passe</th>
+                <th>Telephone</th>
+                <th>Poste</th>
+                <th>Services</th>
+                <th>Edit</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.employees)
+            {
+                <tr>
+                    <td>@item.IdEmployer</td>
+                    <td>@item.NomEmployer</td>
+                    <td>@item.PrenomEmployer</td>
+                    <td>@item.EmailEmployer</td>
+                    <td>@item.PasswordEmployer</td>
+                    <td>@item.TelephoneEmployer</td>
+                    <td>@item.PosteEmployer</td>
+                    <td>@item.Services</td>
+                    
+                    <td>
+                        <a asp-page="UpdateEmployer" class="btn btn-dark" asp-page-handler="Update" asp-route-id="@item.IdEmployer">Edit</a>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="id" value="@item.IdEmployer" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Vous etes sure de supprimer cet employe ? ')"
+                                    asp-page-handler="Delete" asp-route-id="@item.IdEmployer">
+                                Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Pas d'employees</p>
+}

@@ -1,0 +1,177 @@
+﻿@page
+@model AST1.Pages.Materiels.MaterielModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+<title>Ajouter du Materiel</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 bg-black text-white p-3">
+            <div class="mb-4">
+               
+            </div>
+            <div class="mb-4">
+                <button class="btn btn-dark btn-block mb-2" onclick="RedirectAcceuil()">
+                    <i class="fas fa-home"></i> Acceuil
+                    <script>
+                        function RedirectAcceuil() {
+                            window.location.href = "/Home";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onclick="RedirectDisponibilite()">
+                    <i class="fas fa-calendar-alt"></i> Disponibilité
+                    <script>
+                        function RedirectDisponibilite() {
+                            window.location.href = "/Disponibilite/Disponibilite";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectMatierels()">
+                    <i class="fas fa-toolbox"></i> Materiels
+                    <script>
+                        function RedirectMatierels() {
+                            window.location.href = "/Materiels/Materiel";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectBonAchat()">
+                    <i class="fas fa-toolbox"></i> Bon d'Achat
+                    <script>
+                        function RedirectBonAchat() {
+                            window.location.href = "/BonAchat/BonAchat";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectAffectation()">
+                    <i class="fas fa-toolbox"></i> Affectation
+                    <script>
+                        function RedirectAffectation() {
+                            window.location.href = "/Affectation/Affectation";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectMission()">
+                    <i class="fas fa-toolbox"></i> Mission
+                    <script>
+                        function RedirectMission() {
+                            window.location.href = "/Mission/ConsultMission";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectFournisseurs()">
+                    <i class="fas fa-toolbox"></i> Fournisseurs
+                    <script>
+                        function RedirectFournisseurs() {
+                            window.location.href = "/Fournisseurs/Fournisseurs";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectList()">
+                    <i class="fas fa-toolbox"></i> Liste des Employees
+                    <script>
+                        function RedirectList() {
+                            window.location.href = "/List";
+                        }
+                    </script>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h1 class="mb-3">Ajouter un nouveau Materiel</h1>
+                    @if (!String.IsNullOrWhiteSpace(message))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @message
+                        </div>
+                    }
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="SnHardware">SnHardware</label>
+                            <input type="text" class="form-control" id="SnHardware" name="SnHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="DateHardware">DateHardware</label>
+                            <input type="datetime" class="form-control" id="DateHardware" name="DateHardware" >
+                        </div>
+                        <div class="form-group">
+                            <label for="DescriptionHardware">DescriptionHardware</label>
+                            <input type="datetime" class="form-control" id="DescriptionHardware" name="DescriptionHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="TypeHardware">TypeHardware</label>
+                            <input type="text" class="form-control" id="TypeHardware" name="TypeHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="MarqueHardware">MarqueHardware</label>
+                            <input type="text" class="form-control" id="MarqueHardware" name="MarqueHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ModelHardware">ModelHardware</label>
+                            <input type="text" class="form-control" id="ModelHardware" name="ModelHardware">
+                        </div>
+                        <div class="form-group">
+                            <label for="MarqueHardware">MarqueHardware</label>
+                            <input type="text" class="form-control" id="MarqueHardware" name="MarqueHardware">
+                        </div>
+                        <div class="form-group">
+                            <label for="ModelHardware">ModelHardware</label>
+                            <input type="date" class="form-control" id="ModelHardware" name="ModelHardware">
+                        </div>
+                        <div class="form-group">
+                            <label for="AvailableHardware">AvailableHardware</label>
+                            <input type="text" class="form-control" id="AvailableHardware" name="AvailableHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="GrantieHardware">GrantieHardware</label>
+                            <input type="text" class="form-control" id="GrantieHardware" name="GrantieHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ConsommableHardware">ConsommableHardware</label>
+                            <input type="text" class="form-control" id="ConsommableHardware" name="ConsommableHardware" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="IdOrder">IdOrder</label>
+                            <input type="text" class="form-control" id="IdOrder" name="IdOrder" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Créer</button>
+                            <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()"> 
+                                Retourner
+                                <script>
+                                    function RedirectRetourner() {
+                                        window.location.href = "/Home";
+                                    }
+                                </script>
+                            </button>
+                            <button type="submit" class="btn btn-primary" onClick="RedirectList()">
+                            Liste du Materiel
+                            <script>
+                                function RedirectList() {
+                                    window.location.href = "/Materiels/List";
+                                }
+                            </script>
+                          
+                            </button>
+                           
+                               
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

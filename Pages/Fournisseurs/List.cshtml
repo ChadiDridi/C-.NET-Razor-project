@@ -1,0 +1,82 @@
+﻿@page
+@model AST1.Pages.Fournisseurs.ListModel
+@using Microsoft.AspNetCore.Components;
+@inject NavigationManager NavigationManager
+@{
+}
+<h3>@ViewData["Title"]?.ToString()</h3>
+<h1 class="mb-6"> Liste des fournisseurs </h1>
+
+@if (Model.providers != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Nom</th>
+                <th>Fournisseur principale</th>
+                <th>Pays</th>
+                <th>Email</th>
+                <th>Fournisseur actif</th>
+                <th>Adresse du fournisseur</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.providers)
+            {
+                <tr>
+                    <td>@item.IdProvider</td>
+                    <td>@item.NameProvider</td>
+                    <td>@item.PrincipalProvider</td>
+                    <td>@item.PaysProvider</td>
+                    <td>@item.MailProvider</td>
+                    <td>@item.ActifProvider</td>
+                    <td>@item.AdresseProvider</td>
+                    
+                    
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="id" value="@item.IdProvider" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Vous etes sure de supprimer ce fournisseur ? ')"
+                                    asp-page-handler="Delete" asp-route-id="@item.IdProvider">
+                                Supprimer
+                            </button>
+                    <td>
+                        <a asp-page="Update" class="btn btn-primary" asp-page-handler="Update" asp-route-id="@item.IdProvider">Edit</a>
+                    </td>
+                            
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Pas de fournisseurs</p>
+}
+<div>
+    <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()">
+        
+        Retourner
+        <script>
+            function RedirectRetourner() {
+                window.location.href = "/Home";
+            }
+        </script>
+        </button>
+</div>
+        <div>
+        <button type="submit" class="btn btn-primary" onClick="RedirectAjout()">
+            <script>
+function RedirectAjout(){
+    window.location.href ="/Fournisseurs/Fournisseurs";}
+</script>
+        </button>
+    </div>
+    
+
+
+

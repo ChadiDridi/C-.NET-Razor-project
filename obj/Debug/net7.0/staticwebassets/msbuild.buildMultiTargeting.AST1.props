@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AST1.props" />
+</Project>

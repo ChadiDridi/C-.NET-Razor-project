@@ -1,0 +1,159 @@
+﻿@page
+@model AST1.Pages.Fournisseurs.FournisseursModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+<title>Créer un nouveau Fourniseeur</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 bg-black text-white p-3">
+            <div class="mb-4">
+                
+            </div>
+            <div class="mb-4">
+                <button class="btn btn-dark btn-block mb-2" onclick="RedirectAcceuil()">
+                    <i class="fas fa-home"></i> Acceuil
+                    <script>
+                        function RedirectAcceuil() {
+                            window.location.href = "/Home";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onclick="RedirectDisponibilite()">
+                    <i class="fas fa-calendar-alt"></i> Disponibilité
+                    <script>
+                        function RedirectDisponibilite() {
+                            window.location.href = "/Disponibilite/Disponibilite";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectMatierels()">
+                    <i class="fas fa-toolbox"></i> Materiels
+                    <script>
+                        function RedirectMatierels() {
+                            window.location.href = "/Materiels/Materiel";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectBonAchat()">
+                    <i class="fas fa-toolbox"></i> Bon d'Achat
+                    <script>
+                        function RedirectBonAchat() {
+                            window.location.href = "/BonAchat/BonAchat";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectAffectation()">
+                    <i class="fas fa-toolbox"></i> Affectation
+                    <script>
+                        function RedirectAffectation() {
+                            window.location.href = "/Affectation/Affectation";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectMission()">
+                    <i class="fas fa-toolbox"></i> Mission
+                    <script>
+                        function RedirectMission() {
+                            window.location.href = "/Mission/ConsultMission";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectFournisseurs()">
+                    <i class="fas fa-toolbox"></i> Fournisseurs
+                    <script>
+                        function RedirectFournisseurs() {
+                            window.location.href = "/Fournisseurs/Fournisseurs";
+                        }
+                    </script>
+                </button>
+                <button class="btn btn-dark btn-block mb-2" onClick="RedirectList()">
+                    <i class="fas fa-toolbox"></i> Liste des Employees
+                    <script>
+                        function RedirectList() {
+                            window.location.href = "/List";
+                        }
+                    </script>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h1 class="mb-3">Créer un nouveau Fournisseur</h1>
+                    @if (!String.IsNullOrWhiteSpace(message))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @message
+                        </div>
+                    }
+                    <form method="post" asp-page-handler="Create">
+                        <div class="form-group">
+                            <label for="RaisonSocialProvider">Raison Sociale</label>
+                            <input type="text" class="form-control" id="RaisonSocialProvider" name="RaisonSocialProvider" required asp-for="providers.RaisonSocialProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="NameProvider">Nom</label>
+                            <input type="text" class="form-control" id="NameProvider" name="NameProvider" required asp-for="providers.NameProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="AdresseProvider">Adresse</label>
+                            <input type="text" class="form-control" id="AdresseProvider" name="AdresseProvider" required asp-for="providers.AdresseProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="MailProvider">Mail</label>
+                            <input type="email" class="form-control" id="MailProvider" name="MailProvider" required asp-for="providers.MailProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="PaysProvider">Pays</label>
+                            <input type="text" class="form-control" id="PaysProvider" name="PaysProvider" required asp-for="providers.PaysProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="PaysProvider">Actif provider</label>
+                            <input type="text" class="form-control" id="ActifProvider" name="ActifProvider" required asp-for="providers.ActifProvider">
+                        </div>
+                        <div class="form-group">
+                            <label for="PaysProvider">Principal Provider</label>
+                            <input type="text" class="form-control" id="PrincipalProvider" name="PrincipalProvider" required asp-for="providers.PrincipalProvider">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="Phone2Provider">Téléphone 2</label>
+                            <input type="text" class="form-control" id="Phone2Provider" name="Phone2Provider" asp-for="providers.Phone2Provider">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="PhoneProvider">Téléphone</label>
+                            <input type="text" class="form-control" id="PhoneProvider" name="PhoneProvider"   required asp-for="providers.PhoneProvider">
+                        </div>
+           
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Créer</button>
+                            <button type="submit" class="btn btn-primary" onclick="RedirectList()"> Liste des fournisseurs </button>
+                            <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()">
+                                Retourner
+                                <script>
+                                    function RedirectRetourner() {
+                                        window.location.href = "/Home";
+                                    }
+                                    function RedirectList() {
+                                        window.location.href = "/Fournisseurs/List";
+                                    }
+                                </script>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

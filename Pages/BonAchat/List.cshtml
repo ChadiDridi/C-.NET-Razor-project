@@ -1,0 +1,77 @@
+﻿@page
+@model AST1.Pages.BonAchat.ListModel
+@using AST1.Models
+@{
+    var errorMessage = TempData["errorMessage"]?.ToString();
+    var successMessage = TempData["successMessage"]?.ToString();
+    ViewData["Title"] = "Liste des Bon d'Achats";
+}
+<h1>@ViewData["Title"]</h1>
+<p>
+    <a class="btn btn-success" asp-page="/">Create New Order</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdOrder</th>
+            <th>DesignationOrder</th>
+            <th>
+                ReferenceOrder
+            </th>
+            <th>
+                QuantiteOrder
+            </th>
+            <th>
+                QtsOrder
+            </th>
+
+            <th>
+                SnOrder
+            </th>
+            <th>
+                InsOrder
+            </th>
+            <th>
+                IdProvider
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.BonAchats)
+        {
+            <tr>
+                <td>@order.IdOrder</td>
+                
+                <td>@order.DesignationOrder</td>
+                <td>@order.ReferenceOrder</td>
+                <td>@order.QuantiteOrder</td>
+                <td>@order.QtsOrder</td>
+                <td> @order.SnOrder</td>
+                <td>@order.InsOrder</td>
+                <td>@order.IdProvider</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="id" value="@order.IdOrder" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Vous etes sure de supprimer ce mission ? ')"
+                                asp-page-handler="Delete" asp-route-id="@order.IdOrder">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="submit" class="btn btn-primary" onclick="RedirectHome()"> retourner </button>
+<button type="submit" class="btn btn-primary" onclick="RedirectPage()"> Ajouter </button>
+
+<script>
+    function RedirectHome() {
+        window.location.href = "/Home";
+    }
+    function RedirectPage() {
+        window.location.href = "/BonAchat/BonAchat";
+    }
+</script>

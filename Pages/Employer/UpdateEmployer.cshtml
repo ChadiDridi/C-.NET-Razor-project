@@ -1,0 +1,61 @@
+﻿@page "/UpdateEmployer/{id}"
+@using AST1.Models;
+@using Microsoft.AspNetCore.Components;
+@model AST1.Pages.Employer.UpdateEmployerModel
+@inject NavigationManager NavigationManager
+@using AST1.SQLConnection
+@{
+    
+}
+<h1>Modifier Employer</h1>
+
+<form method="post" asp-page-handler="UpdateEmployer" asp-page="/Employer/UpdateEmployer"  class="mt-5">
+       
+    <h3>Edit employer with ID  </h3>
+   <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="IdEmployer" asp-for="Employer.IdEmployer"  required>
+    <div class="mb-3">
+        <label for="" class="form-label"> Nom de l'employer  </label>
+        <input type="text" class="form-control" name="NomEmployer" asp-for="Employer.NomEmployer"  required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Prenom</label>
+            <input type="text" class="form-control" name="PrenomEmployer" asp-for="Employer.PrenomEmployer"  required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email </label>
+        <input type="text" class="form-control" name="EmailEmployer" asp-for="Employer.EmailEmployer"  required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Mot de passe </label>
+        <input type="text" class="form-control" name="PasswordEmployer" asp-for="Employer.PasswordEmployer"  required>
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Poste</label>
+        <input type="text" class="form-control" name="PosteEmployer" asp-for="Employer.PosteEmployer"  required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telephone </label>
+        <input type="text" class="form-control" name="TelephoneEmployer" asp-for="Employer.TelephoneEmployer"  required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Modifier</button>
+    <button id="UpdateEmployee" type="submit" class="btn btn-primary">
+        <script>
+            function RedirectLogin() {
+                window.location.href = "/List";
+            }
+        </script>Retourner
+    </button>
+</form>
+
+<script>
+    
+    document.getElementById("retournerButton").addEventListener("click", function () {
+        window.location.href="/Home"; 
+    });
+</script>
+
+
+    

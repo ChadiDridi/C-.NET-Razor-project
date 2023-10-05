@@ -1,0 +1,105 @@
+﻿@page
+@model AST1.Pages.Mission.ListModel
+@using AST1.Models
+
+
+@{
+    var errorMessage = TempData["errorMessage"]?.ToString();
+    var successMessage = TempData["successMessage"]?.ToString();
+    ViewData["Title"]= "Liste des missions";
+}
+<h1>@ViewData["Title"]</h1>
+<p>
+    <a class="btn btn-success" onclick="RedirectPage()">Create New Mission</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdMission</th>
+           
+            <th>
+                DateReturnMission
+            </th>
+            <th>
+                EmplacementMission
+            </th>
+            <th>
+                DescriptionMission
+            </th>
+            <th>
+                MvMission
+            </th>
+            <th>
+                InsMission
+</th>
+            <th>IdEmployer</th>
+           <th>Id Hardware</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mission in Model.Missions)
+        {
+            <tr style="background-color: @(GetRowColor(mission.DateReturnMission))">
+                <td>@mission.IdMission</td>
+                <td>@mission.DateReturnMission</td>
+                <td>@mission.EmplacementMission</td>
+                <td>@mission.DescriptionMission</td>
+                
+                <td>@mission.MvMission</td>
+                <td> @mission.InsMission</td>
+                <td>@mission.IdEmployer</td>
+                <td>@mission.IdHardware</td>
+                <td>
+                <form method="post">
+                    <input type="hidden" name="id" value="@mission.IdMission" />
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Vous etes sure de supprimer ce mission ? ')"
+                            asp-page-handler="Delete" asp-route-id="@mission.IdMission">
+                        Supprimer
+                    </button>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="submit" class="btn btn-primary" onclick="RedirectHome()" > retourner </button>
+<button type="submit" class="btn btn-primary" onclick="RedirectPage()"> Ajouter </button>
+
+<script>
+function RedirectHome() {
+        window.location.href = "/Home";
+    }
+function RedirectPage() {
+        window.location.href = "/Mission/ConsultMission";
+    }
+</script>
+@functions{
+    public string GetRowColor(string dateReturnString)
+    {
+        if (DateTime.TryParse(dateReturnString, out DateTime dateReturn))
+        {
+            var currentDate = DateTime.Now.Date;
+            var oneMonthLater = currentDate.AddMonths(1);
+
+            if (dateReturn < currentDate)
+            {
+                return "red"; // You can define the "lightred" class in your CSS
+            }
+            else if (dateReturn < oneMonthLater)
+            {
+                return "orange"; // You can define the "lightorange" class in your CSS
+            }
+            else
+            {
+                return "lightgreen"; // You can define the "lightgreen" class in your CSS
+            }
+        }
+        else
+        {
+            // Failed to parse the date, handle accordingly (e.g., return a default color)
+            return "defaultColor"; // You can define the default color class in your CSS
+        }
+    }
+
+}

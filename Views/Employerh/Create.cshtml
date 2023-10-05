@@ -1,0 +1,43 @@
+﻿@model AST1.Models.EmployerhViewModel
+
+@{
+    ViewData["Title"]= "Create";
+    var errorMessage=TempData["errorMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]?.ToString()</h3>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" action="Create" class="mt-5">
+            <div class="mb-3">
+                <label for="" class="form-label">Nom de l'employer </label>
+                <input type="text" class="form-control" asp-for="Employerh.NomEmployer" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Prenom</label>
+                <input type="text" class="form-control" asp-for="Employerh.PrenomEmployer" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Email</label>
+                <input type="text" class="form-control" asp-for="Employerh.EmailEmployer" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Mot de passe </label>
+                <input type="text" class="form-control" asp-for="Employerh.PasswordEmployer" required>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Poste </label>
+                <input type="text" class="form-control" asp-for="Employerh.PosteEmployer" required >
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Telephone </label>
+                <input type="text" class="form-control" asp-for="Employerh.TelephoneEmployer" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button id="retournerButton" type="submit" class="btn btn-primary" onclick="RedirectLogin"> return </button>
+            <script>
+                function RedirectLogin() {
+                    window.location.href = "/";
+                }
+            </script>Retourner</button>
+        </form>
+    </div>

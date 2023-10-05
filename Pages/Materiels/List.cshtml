@@ -1,0 +1,134 @@
+﻿@page
+@model AST1.Pages.Materiels.ListModel
+@{
+}
+<br>
+<h2> Liste des Materiels</h2>
+<button class='btn btn-primary btn-sm' onclick="RedirectMateriel()">
+    Ajouter un Materiel
+    
+    <script>
+function RedirectMateriel(){
+    return window.location.href = "/Materiels/Materiel";}
+    </script>
+</button>
+
+
+<table class="table">
+    <thead>
+<tr>
+    <th>
+IdHardware
+    </th>
+    <th>
+SnHardware
+    </th>
+    <th>
+DateHardware
+</th>
+   <th>
+       DatecreateHardware
+    </th>
+<th>
+        DescriptionHardware
+        </th>
+<th>
+                TypeHardware
+
+        </th>
+<th>
+EtatHardware        </th>
+<th>
+MarqueHardware        </th>
+<th>
+ModelHardware        </th>
+<th>
+AvailableHardware        </th>
+<th>
+GrantieHardware        </th>
+<th>
+ConsommableHardware        </th>
+<th>
+LoginHardware        </th>
+<th>
+IdOrder        </th>
+</tr>
+<th>
+
+
+</th>
+</thead>
+<tbody>
+        @foreach (var item in  Model.hardwares)
+    {
+<tr>
+            <td>
+                    @item.IdHardware
+            </td>
+            <td>
+                    @item.SnHardware
+            </td>
+            <td>
+                    @item.DateHardware
+            </td>
+            <td>
+                    @item.DatecreateHardware
+            </td>
+            <td>
+                    @item.DescriptionHardware
+            </td>
+            <td>
+                    @item.TypeHardware
+            </td>
+            <td>
+                    @item.EtatHardware
+            </td>
+            <td>
+                    @item.MarqueHardware
+            </td>
+            <td>
+                    @item.ModelHardware
+            </td>
+            <td>
+                    @item.AvailableHardware
+            </td>
+            
+            <td>
+                    @item.GrantieHardware
+            </td>
+            <td>
+                    @item.ConsommableHardware
+            </td>
+            <td>
+                    @item.LoginHardware
+            </td>
+            <td>
+                    @item.IdOrder
+            </td>
+
+
+            <td>
+                    <form method="post">
+                        <input type="hidden" name="id" value="@item.IdHardware" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Vous etes sure de supprimer ce Hardware ? ')"
+                                asp-page-handler="Delete" asp-route-id="@item.IdHardware">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+</tr>
+    }
+
+
+</tbody>
+</table>
+<div>
+    <button type="submit" class="btn btn-primary" onClick="RedirectRetourner()">
+        Retourner
+        <script>
+            function RedirectRetourner() {
+                window.location.href = "/Home";
+            }
+        </script>
+    </button>
+</div>

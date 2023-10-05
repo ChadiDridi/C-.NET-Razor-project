@@ -1,0 +1,39 @@
+﻿@model AST1.Models.Employerh
+@{}
+<h1>Modifier Employer</h1>
+    <form method="post" action="add"class="mt-5">
+    <div class="mb-3">
+
+
+        <label for="" class="form-label">Nom de l'employer  </label>
+        <input type="text" class="form-control" asp-for="NomEmployer" required>
+
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Prenom</label>
+        <input type="text" class="form-control" asp-for="PrenomEmployer" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="text" class="form-control" asp-for="EmailEmployer" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Mot de passe </label>
+        <input type="text" class="form-control" asp-for="PasswordEmployer" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Poste </label>
+        <input type="text" class="form-control" asp-for="PosteEmployer" required>
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telephone </label>
+        <input type="text" class="form-control" asp-for="TelephoneEmployer" required>
+
+    </div>
+
+    <button  asp-action="UpdateEmployee"   type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-primary">Retourner</button>
+</form>
+
